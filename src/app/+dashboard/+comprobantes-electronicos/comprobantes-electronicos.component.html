@@ -1,11 +1,127 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
+<div id="content" class="search-view">
+    <sa-big-breadcrumbs [items]="['Comprobantes Electrónicos']" icon="group"></sa-big-breadcrumbs>
 
-<h1>Hola Diplomado</h1>
-</body>
-</html>
+
+    <sa-widgets-grid>
+
+        <!-- START ROW -->
+        <div class="row">
+            <!-- NEW COL START -->
+            <article class="col-sm-12">
+
+                <sa-widget [colorbutton]="false" [editbutton]="false" [fullscreenbutton]="false" [custombutton]="false"
+                           [sortable]="false" [deletebutton]="false">
+
+                    <div class="widget-body">
+                        <fieldset>
+                            <legend>Comprobantes Electrónicos</legend>
+
+                            <div class="col-md-8">
+                                <div class="smart-form">
+                                    <div class="row">
+                                        <section class="col col-md-6">
+                                            <label>Numero y Serie</label>
+                                            <label class="input">
+                                                <input type="text" [(ngModel)]="consultaComprobanteInterna.serieYNumero">
+                                            </label>
+                                        </section>
+                                        <section class="col col-md-6">
+                                            <label>Tipo Documento</label>
+                                            <label class="input">
+                                                <p-dropdown [options]="tipoDocumentos" [(ngModel)]="consultaComprobanteInterna.tipoDocumento"></p-dropdown>
+                                            </label>
+                                        </section>
+                                    </div>
+
+                                    <div class="row">
+                                        <section class="col col-md-6">
+                                            <label>Fecha Inicio</label>
+                                            <label class="input">
+                                                <p-calendar [(ngModel)]="consultaComprobanteInterna.fechaDesde"></p-calendar>
+                                            </label>
+                                        </section>
+                                        <section class="col col-md-6">
+                                            <label>Fecha Fin</label>
+                                            <label class="input">
+                                                <p-calendar [(ngModel)]="consultaComprobanteInterna.fechaHasta"></p-calendar>
+                                            </label>
+                                        </section>
+                                    </div>
+
+                                    <div class="row">
+                                        <section class="col col-md-6">
+                                            <label>Ruc</label>
+                                            <label class="input">
+                                                <input type="text" [(ngModel)]="consultaComprobanteInterna.ruc">
+                                            </label>
+                                        </section>
+
+                                        <section class="col col-md-6" >
+                                            <label>Razon Social</label>
+                                            <label class="input">
+                                                <input type="text" [(ngModel)]="consultaComprobanteInterna.razonSocial">
+                                            </label>
+                                        </section>
+
+                                    </div>
+
+
+
+                                </div>
+                            </div>
+                        </fieldset>
+
+                        <fieldset>
+                            <div class="padding-bottom-10 text-right">
+                                <button (click)="consultar()" class="btn btn-default">
+                                    Consultar
+                                </button>
+
+                            </div>
+                        </fieldset>
+
+
+                        <fieldset>
+
+
+                            <p-table [value]="cabeceras" selectionMode="single" [paginator]="true" rows="10" [responsive]="true">
+
+                                <p-column field="docuFecha" header="Fecha Emision" ></p-column>
+                                <p-column field="docuTipodocumento" header="Tipo Documento" ></p-column>
+                                <p-column field="docuNumero" header="Numero Documento" ></p-column>
+                                <p-column field="clieNumero" header="Cliente" ></p-column>
+
+                                <p-column field="docuSubtotal" header="SubTotal" ></p-column>
+                                <p-column field="docuIgv" header="IGV" ></p-column>
+                                <p-column field="docuTotal" header="Total" ></p-column>
+                                <p-column field="docuProceStatus" header="Estado" ></p-column>
+                                <p-column field="docuProceFecha" header="Recepcion" ></p-column>
+
+                                <p-column field="" header="Archivos" >
+
+
+                                    <ng-template let-cabecera="rowData" pTemplate="body">
+                                        <button type="button"  (click)="downloadFile(cabecera.docuLinkPdf)">pdf</button>
+                                        <!--<button type="button"  (click)="downloadFile(cabecera.docuLinkCdr)">cdr</button>-->
+                                        <!--<button type="button"  (click)="downloadFile(cabecera.docuLinkXml)">xml</button>-->
+                                    </ng-template>
+
+                                </p-column>
+
+                            </p-table>
+
+                        </fieldset>
+
+
+
+                    </div>
+                </sa-widget>
+
+            </article>
+            <!-- END COL -->
+
+        </div>
+
+
+    </sa-widgets-grid>
+</div>
