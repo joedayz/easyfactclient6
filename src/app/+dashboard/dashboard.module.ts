@@ -10,7 +10,7 @@ import {DropdownModule} from 'primeng/dropdown';
 import {CalendarModule} from 'primeng/calendar';
 import {TableModule} from 'primeng/table';
 import {DialogModule} from "primeng/dialog";
-
+import {InputTextModule} from 'primeng/inputtext';
 
 @NgModule({
     imports: [
@@ -21,7 +21,8 @@ import {DialogModule} from "primeng/dialog";
         DropdownModule,
         CalendarModule,
         TableModule,
-        DialogModule
+        DialogModule,
+        InputTextModule
 
     ],
     declarations: [ComprobantesElectronicosComponent],
