@@ -38,7 +38,7 @@ export class ComprobantesElectronicosComponent implements OnInit {
         this.consultaComprobanteElectronicoService.consultaInterna(this.consultaComprobanteInterna).subscribe(
             (data: Cabecera[]) => {
 
-                debugger;
+
                 this.cabeceras = data;
             },
             error => {

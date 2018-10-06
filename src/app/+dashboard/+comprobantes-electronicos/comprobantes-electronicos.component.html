@@ -84,29 +84,39 @@
                         <fieldset>
 
 
-                            <p-table [value]="cabeceras" selectionMode="single" [paginator]="true" rows="10" [responsive]="true">
+                            <p-table [value]="cabeceras" [responsive]="true" [paginator]="true" [rows]="10">
 
-                                <p-column field="docuFecha" header="Fecha Emision" ></p-column>
-                                <p-column field="docuTipodocumento" header="Tipo Documento" ></p-column>
-                                <p-column field="docuNumero" header="Numero Documento" ></p-column>
-                                <p-column field="clieNumero" header="Cliente" ></p-column>
+                                <ng-template pTemplate="header">
 
-                                <p-column field="docuSubtotal" header="SubTotal" ></p-column>
-                                <p-column field="docuIgv" header="IGV" ></p-column>
-                                <p-column field="docuTotal" header="Total" ></p-column>
-                                <p-column field="docuProceStatus" header="Estado" ></p-column>
-                                <p-column field="docuProceFecha" header="Recepcion" ></p-column>
+                                    <tr>
+                                        <th>Fecha Emision</th>
+                                        <th>Tipo Documento</th>
+                                        <th>Numero Documento</th>
+                                        <th>Cliente</th>
+                                        <th>SubTotal</th>
+                                        <th>IGV</th>
+                                        <th>Total</th>
+                                        <th>Estado</th>
+                                        <th>Recepcion</th>
+                                    </tr>
+                                </ng-template>
 
-                                <p-column field="" header="Archivos" >
+                                <ng-template pTemplate="body" let-cabecera>
 
+                                    <tr>
+                                        <th>{{cabecera.docuFecha}}</th>
+                                        <th>{{cabecera.docuTipodocumento}}</th>
+                                        <th>{{cabecera.docuNumero}}</th>
+                                        <th>{{cabecera.clieNumero}}</th>
+                                        <th>{{cabecera.docuSubtotal}}</th>
+                                        <th>{{cabecera.docuIgv}}</th>
+                                        <th>{{cabecera.docuTotal}}</th>
+                                        <th>{{cabecera.docuProceStatus}}</th>
+                                        <th>{{cabecera.docuProceFecha}}</th>
+                                    </tr>
 
-                                    <ng-template let-cabecera="rowData" pTemplate="body">
-                                        <button type="button"  (click)="downloadFile(cabecera.docuLinkPdf)">pdf</button>
-                                        <!--<button type="button"  (click)="downloadFile(cabecera.docuLinkCdr)">cdr</button>-->
-                                        <!--<button type="button"  (click)="downloadFile(cabecera.docuLinkXml)">xml</button>-->
-                                    </ng-template>
+                                </ng-template>
 
-                                </p-column>
 
                             </p-table>
 
